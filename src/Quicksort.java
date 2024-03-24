@@ -1,14 +1,16 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 /**
  * {Project Description Here}
  */
 
-
-
 /**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {franciscawood}
  */
 
 // On my honor:
@@ -33,11 +35,32 @@
 
 public class Quicksort {
 
-    /**
-     * @param args
-     *      Command line parameters.  See the project spec!!!
-     */
-    public static void main(String[] args) {
-        // This is the main file for the program.
-    }
+	/**
+	 * @param args Command line parameters. See the project spec!!!
+	 */
+	public static void main(String[] args) {
+		int bufferCount = Integer.parseInt(args[1]);
+		RandomAccessFile fileToSort = null;
+		try {
+			fileToSort = new RandomAccessFile(args[0], "rw");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (fileToSort != null) {
+			FileWriter statistics = new FileWriter(args[2], true);
+			// starts sorting on file with first argument name
+			LRUBufferPool bufPool = new LRUBufferPool(fileToSort, bufferCount);
+			bufPool.closeFile();
+
+			statistics.write("Sort on " + args[0] + "\n");
+			statistics.write("Cache Hits: " + bufPool.getHits() + "\n");
+			statistics.write("Disk reads: " + bufPool.getReads() + "\n");
+			statistics.write("Disk writes: " + bufPool.getWrites() + "\n");
+			statistics.write("Time is " + bufPool.getTime() + "\n");
+			statistics.flush();
+			statistics.close();
+		} else {
+			System.out.println("No such file with name: " + args[0]);
+		}
+	}
 }
