@@ -47,7 +47,7 @@ public class Buffer {
     }
 
 
-    public short retrieveKey(int id) {
+    public short getKey(int id) {
         short key = 0;
         ByteBuffer bbuffer = ByteBuffer.allocate(2);
         bbuffer.put(bytes, id, 2);

@@ -1,0 +1,10 @@
+Sort on input.bin
+Cache Hits: 18720
+Disk reads: 1
+Disk writes: 1
+Time is 0
+Sort on input.bin
+Cache Hits: 17698
+Disk reads: 1
+Disk writes: 1
+Time is 0

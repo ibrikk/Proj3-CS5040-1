@@ -37,8 +37,9 @@ public class Quicksort {
 
 	/**
 	 * @param args Command line parameters. See the project spec!!!
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		int bufferCount = Integer.parseInt(args[1]);
 		RandomAccessFile fileToSort = null;
 		try {
