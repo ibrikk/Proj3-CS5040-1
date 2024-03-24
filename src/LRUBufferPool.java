@@ -7,10 +7,6 @@ public class LRUBufferPool {
     private boolean hitFlag;
     private static final int BLOCK_SIZE = 4096;
     private static final int RECORD_SIZE = 4;
-    private long executionTime;
-    int hits = 0;
-    int reads = 0;
-    int writes = 0;
 
     public LRUBufferPool(RandomAccessFile file, int bufferCount)
         throws IOException {
@@ -23,7 +19,7 @@ public class LRUBufferPool {
         }
         new QuicksortManager(this, diskLength);
         flush();
-        executionTime = System.currentTimeMillis() - startTime;
+        Statistics.executionTime = System.currentTimeMillis() - startTime;
     }
 
 
@@ -63,7 +59,7 @@ public class LRUBufferPool {
             disk.seek(toBeRemoved.getPosition() * BLOCK_SIZE);
             byte[] temp = toBeRemoved.getByteArray();
             disk.write(temp);
-            writes += 1;
+            Statistics.writes++;
             disk.seek(0);
         }
     }
@@ -83,7 +79,7 @@ public class LRUBufferPool {
             if (cacheQueue.getSize() > cacheQueue.getCapacity()) {
                 removeFromPool();
             }
-            reads += 1;
+            Statistics.reads++;
             hitFlag = false;
             return found;
         }
@@ -95,7 +91,7 @@ public class LRUBufferPool {
     public short fetchKey(int index) throws IOException {
         short found = 0;
         if (hitFlag) {
-            hits++;
+            Statistics.hits++;
         }
         Buffer buf = locateBuffer(index);
         int bufferPos = (index * RECORD_SIZE) % BLOCK_SIZE;
@@ -111,28 +107,8 @@ public class LRUBufferPool {
     }
 
 
-    public int getHits() {
-        return hits;
-    }
-
-
-    public int getReads() {
-        return reads;
-    }
-
-
-    public int getWrites() {
-        return writes;
-    }
-
-
     public Queue getQueue() {
         return cacheQueue;
-    }
-
-
-    public long measureTime() {
-        return (executionTime / 1000000);
     }
 
 

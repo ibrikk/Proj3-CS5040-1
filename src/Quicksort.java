@@ -59,12 +59,12 @@ public class Quicksort {
 
             logFile.write("Sorting process initiated for: " + arguments[0]
                 + "\n");
-            logFile.write("Cache Hit Count: " + memoryPool.getHits() + "\n");
-            logFile.write("Number of Reads from Disk: " + memoryPool.getReads()
+            logFile.write("Cache Hit Count: " + Statistics.getHits() + "\n");
+            logFile.write("Number of Reads from Disk: " + Statistics.getReads()
                 + "\n");
-            logFile.write("Number of Writes to Disk: " + memoryPool.getWrites()
+            logFile.write("Number of Writes to Disk: " + Statistics.getWrites()
                 + "\n");
-            logFile.write("Elapsed Time: " + memoryPool.measureTime() + "\n");
+            logFile.write("Elapsed Time: " + Statistics.measureTime() + "\n");
             logFile.flush();
             logFile.close();
         }
