@@ -3,8 +3,8 @@ import java.io.RandomAccessFile;
 
 public class LRUBufferPool {
     private RandomAccessFile disk;
-    private Queue lru;
-    private boolean cacheFlag;
+    private Queue cacheQueue;
+    private boolean hitFlag;
     private static final int BLOCK_SIZE = 4096;
     private static final int RECORD_SIZE = 4;
     private long executionTime;
@@ -17,9 +17,9 @@ public class LRUBufferPool {
         long startTime = System.currentTimeMillis();
         disk = file;
         int diskLength = (int)disk.length();
-        lru = new Queue(bufferCount);
+        cacheQueue = new Queue(bufferCount);
         for (int i = 0; i < bufferCount; i++) {
-            lru.add(new Buffer(null, -1));
+            cacheQueue.enqueue(new Buffer(null, -1));
         }
         new QuicksortManager(this, diskLength);
         flush();
@@ -32,13 +32,13 @@ public class LRUBufferPool {
         int bytesCopied,
         int destinationPos)
         throws IOException {
-        Buffer found = getBuffer(destinationPos);
+        Buffer found = locateBuffer(destinationPos);
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
-        byte[] temp = found.getArray();
+        byte[] temp = found.getByteArray();
         for (int i = 0; i < bytesCopied; i++) {
             temp[bufferPos++] = fromArray[i];
         }
-        found.setArray(temp);
+        found.setByteArray(temp);
         found.setDirty(true);
     }
 
@@ -48,9 +48,9 @@ public class LRUBufferPool {
         int bytesCopied,
         int destinationPos)
         throws IOException {
-        Buffer found = getBuffer(destinationPos);
+        Buffer found = locateBuffer(destinationPos);
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
-        byte[] temp = found.getArray();
+        byte[] temp = found.getByteArray();
         for (int i = 0; i < bytesCopied; i++) {
             fromArray[i] = temp[bufferPos++];
         }
@@ -58,10 +58,10 @@ public class LRUBufferPool {
 
 
     public void removeFromPool() throws IOException {
-        Buffer toBeRemoved = lru.remove();
+        Buffer toBeRemoved = cacheQueue.dequeue();
         if (toBeRemoved != null && toBeRemoved.isDirty()) {
             disk.seek(toBeRemoved.getPosition() * BLOCK_SIZE);
-            byte[] temp = toBeRemoved.getArray();
+            byte[] temp = toBeRemoved.getByteArray();
             disk.write(temp);
             writes += 1;
             disk.seek(0);
@@ -69,44 +69,43 @@ public class LRUBufferPool {
     }
 
 
-    public Buffer getBuffer(int pos) throws IOException {
-        int bufferP = (pos * RECORD_SIZE) / BLOCK_SIZE;
-        Buffer found = lru.find(bufferP);
-        // if not in the buffer pool, add it to buffer pool from reading file
+    public Buffer locateBuffer(int pos) throws IOException {
+        int bufferIndex = (pos * RECORD_SIZE) / BLOCK_SIZE;
+        Buffer found = cacheQueue.search(bufferIndex);
         if (found == null) {
+            // If Buffer pool is null, then create
             byte[] newBuff = new byte[BLOCK_SIZE];
-            disk.seek(BLOCK_SIZE * bufferP);
+            disk.seek(BLOCK_SIZE * bufferIndex);
             disk.read(newBuff, 0, BLOCK_SIZE);
             disk.seek(0);
-            found = new Buffer(newBuff, bufferP);
-            lru.add(found);
-            if (lru.getSize() > lru.getCapacity()) {
+            found = new Buffer(newBuff, bufferIndex);
+            cacheQueue.enqueue(found);
+            if (cacheQueue.getSize() > cacheQueue.getCapacity()) {
                 removeFromPool();
             }
             reads += 1;
-            cacheFlag = false;
+            hitFlag = false;
             return found;
         }
-        // track as cache hit
-        cacheFlag = true;
+        hitFlag = true;
         return found;
     }
 
 
-    public short retrieveKey(int index) throws IOException {
+    public short fetchKey(int index) throws IOException {
         short found = 0;
-        if (cacheFlag) {
+        if (hitFlag) {
             hits++;
         }
-        Buffer buf = getBuffer(index);
+        Buffer buf = locateBuffer(index);
         int bufferPos = (index * RECORD_SIZE) % BLOCK_SIZE;
-        found = buf.getKey(bufferPos);
+        found = buf.extractKey(bufferPos);
         return found;
     }
 
 
     public void flush() throws IOException {
-        while (lru.getSize() > 0) {
+        while (cacheQueue.getSize() > 0) {
             removeFromPool();
         }
     }
@@ -128,16 +127,16 @@ public class LRUBufferPool {
 
 
     public Queue getQueue() {
-        return lru;
+        return cacheQueue;
     }
 
 
-    public long getTime() {
+    public long measureTime() {
         return (executionTime / 1000000);
     }
 
 
-    public void terminateFileOperation() throws IOException {
+    public void closeFileStream() throws IOException {
         disk.close();
     }
 

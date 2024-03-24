@@ -18,13 +18,13 @@ public class QuicksortManager {
         }
         int leftTemp = leftIndex;
         int rightTemp = rightIndex;
-        short pivotValue = bufferPoolInstance.retrieveKey(leftIndex);
+        short pivotValue = bufferPoolInstance.fetchKey(leftIndex);
         int currentPosition = leftIndex;
         while (currentPosition <= rightTemp) {
-            if (bufferPoolInstance.retrieveKey(currentPosition) < pivotValue) {
+            if (bufferPoolInstance.fetchKey(currentPosition) < pivotValue) {
                 swapElements(leftTemp++, currentPosition++);
             }
-            else if (bufferPoolInstance.retrieveKey(
+            else if (bufferPoolInstance.fetchKey(
                 currentPosition) > pivotValue) {
                 swapElements(currentPosition, rightTemp--);
             }

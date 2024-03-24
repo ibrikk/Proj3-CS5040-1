@@ -8,22 +8,20 @@ public class Buffer {
     public Buffer(byte[] bytes, int pos) {
         if (bytes != null) {
             this.bytes = new byte[bytes.length];
-            setArray(bytes);
+            setByteArray(bytes);
         }
         dirty = false;
         setPosition(pos);
     }
 
 
-    public byte[] getArray() {
+    public byte[] getByteArray() {
         return bytes;
     }
 
 
-    public void setArray(byte[] bytes) {
-        for (int i = 0; i < bytes.length; i++) {
-            this.bytes[i] = bytes[i];
-        }
+    public void setByteArray(byte[] newData) {
+        System.arraycopy(newData, 0, this.bytes, 0, newData.length);
     }
 
 
@@ -47,7 +45,7 @@ public class Buffer {
     }
 
 
-    public short getKey(int id) {
+    public short extractKey(int id) {
         short key = 0;
         ByteBuffer bbuffer = ByteBuffer.allocate(2);
         bbuffer.put(bytes, id, 2);

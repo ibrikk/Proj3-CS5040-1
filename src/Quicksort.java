@@ -54,9 +54,8 @@ public class Quicksort {
         }
         if (targetFile != null) {
             FileWriter logFile = new FileWriter(arguments[2], true);
-            // Initializes sorting operation on the specified file.
             LRUBufferPool memoryPool = new LRUBufferPool(targetFile, poolSize);
-            memoryPool.terminateFileOperation();
+            memoryPool.closeFileStream();
 
             logFile.write("Sorting process initiated for: " + arguments[0]
                 + "\n");
@@ -65,7 +64,7 @@ public class Quicksort {
                 + "\n");
             logFile.write("Number of Writes to Disk: " + memoryPool.getWrites()
                 + "\n");
-            logFile.write("Elapsed Time: " + memoryPool.getTime() + "\n");
+            logFile.write("Elapsed Time: " + memoryPool.measureTime() + "\n");
             logFile.flush();
             logFile.close();
         }
