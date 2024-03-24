@@ -1,46 +1,53 @@
 import java.io.IOException;
 
 public class QuicksortManager {
-    public static LRUBufferPool bufferPool;
-    private static final int RECORD_SIZE = 4;
+    public static LRUBufferPool bufferPoolInstance;
+    private static final int SIZE_OF_RECORD = 4;
 
-    public QuicksortManager(LRUBufferPool pool, int filelength)
+    public QuicksortManager(LRUBufferPool pool, int lengthOfFile)
         throws IOException {
-        bufferPool = pool;
-        quicksort(0, (filelength / RECORD_SIZE) - 1);
+        bufferPoolInstance = pool;
+        performQuickSort(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
     }
 
 
-    private void quicksort(int i, int j) throws IOException {
-        if (j <= i) {
+    private void performQuickSort(int leftIndex, int rightIndex)
+        throws IOException {
+        if (rightIndex <= leftIndex) {
             return;
         }
-        int iTemp = i;
-        int jTemp = j;
-        short v = bufferPool.retrieveKey(i);
-        int count = i;
-        while (count <= jTemp) {
-            if (bufferPool.retrieveKey(count) < v) {
-                swap(iTemp++, count++);
+        int leftTemp = leftIndex;
+        int rightTemp = rightIndex;
+        short pivotValue = bufferPoolInstance.retrieveKey(leftIndex);
+        int currentPosition = leftIndex;
+        while (currentPosition <= rightTemp) {
+            if (bufferPoolInstance.retrieveKey(currentPosition) < pivotValue) {
+                swapElements(leftTemp++, currentPosition++);
             }
-            else if (bufferPool.retrieveKey(count) > v) {
-                swap(count, jTemp--);
+            else if (bufferPoolInstance.retrieveKey(
+                currentPosition) > pivotValue) {
+                swapElements(currentPosition, rightTemp--);
             }
             else {
-                count++;
+                currentPosition++;
             }
         }
-        quicksort(i, iTemp - 1);
-        quicksort(jTemp + 1, j);
+        performQuickSort(leftIndex, leftTemp - 1);
+        performQuickSort(rightTemp + 1, rightIndex);
     }
 
 
-    private void swap(int l, int r) throws IOException {
-        byte[] lTemp = new byte[RECORD_SIZE];
-        byte[] rTemp = new byte[RECORD_SIZE];
-        bufferPool.getBytes(lTemp, RECORD_SIZE, l);
-        bufferPool.getBytes(rTemp, RECORD_SIZE, r);
-        bufferPool.insert(lTemp, RECORD_SIZE, r);
-        bufferPool.insert(rTemp, RECORD_SIZE, l);
+    private void swapElements(int firstPosition, int secondPosition)
+        throws IOException {
+        byte[] tempForFirst = new byte[SIZE_OF_RECORD];
+        byte[] tempForSecond = new byte[SIZE_OF_RECORD];
+        bufferPoolInstance.retrieveBytes(tempForFirst, SIZE_OF_RECORD,
+            firstPosition);
+        bufferPoolInstance.retrieveBytes(tempForSecond, SIZE_OF_RECORD,
+            secondPosition);
+        bufferPoolInstance.storeBytes(tempForFirst, SIZE_OF_RECORD,
+            secondPosition);
+        bufferPoolInstance.storeBytes(tempForSecond, SIZE_OF_RECORD,
+            firstPosition);
     }
 }

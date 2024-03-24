@@ -35,33 +35,42 @@ import java.io.RandomAccessFile;
 
 public class Quicksort {
 
-	/**
-	 * @param args Command line parameters. See the project spec!!!
-	 * @throws IOException 
-	 */
-	public static void main(String[] args) throws IOException {
-		int bufferCount = Integer.parseInt(args[1]);
-		RandomAccessFile fileToSort = null;
-		try {
-			fileToSort = new RandomAccessFile(args[0], "rw");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (fileToSort != null) {
-			FileWriter statistics = new FileWriter(args[2], true);
-			// starts sorting on file with first argument name
-			LRUBufferPool bufPool = new LRUBufferPool(fileToSort, bufferCount);
-			bufPool.closeFile();
+    /**
+     * Main method to execute the sorting process.
+     * 
+     * @param arguments
+     *            Command line arguments provided to the program.
+     * @throws IOException
+     *             If an I/O error occurs.
+     */
+    public static void main(String[] arguments) throws IOException {
+        int poolSize = Integer.parseInt(arguments[1]);
+        RandomAccessFile targetFile = null;
+        try {
+            targetFile = new RandomAccessFile(arguments[0], "rw");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (targetFile != null) {
+            FileWriter logFile = new FileWriter(arguments[2], true);
+            // Initializes sorting operation on the specified file.
+            LRUBufferPool memoryPool = new LRUBufferPool(targetFile, poolSize);
+            memoryPool.terminateFileOperation();
 
-			statistics.write("Sort on " + args[0] + "\n");
-			statistics.write("Cache Hits: " + bufPool.getHits() + "\n");
-			statistics.write("Disk reads: " + bufPool.getReads() + "\n");
-			statistics.write("Disk writes: " + bufPool.getWrites() + "\n");
-			statistics.write("Time is " + bufPool.getTime() + "\n");
-			statistics.flush();
-			statistics.close();
-		} else {
-			System.out.println("No such file with name: " + args[0]);
-		}
-	}
+            logFile.write("Sorting process initiated for: " + arguments[0]
+                + "\n");
+            logFile.write("Cache Hit Count: " + memoryPool.getHits() + "\n");
+            logFile.write("Number of Reads from Disk: " + memoryPool.getReads()
+                + "\n");
+            logFile.write("Number of Writes to Disk: " + memoryPool.getWrites()
+                + "\n");
+            logFile.write("Elapsed Time: " + memoryPool.getTime() + "\n");
+            logFile.flush();
+            logFile.close();
+        }
+        else {
+            System.out.println("File not found: " + arguments[0]);
+        }
+    }
 }

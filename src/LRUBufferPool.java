@@ -1,13 +1,13 @@
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class LRUBufferPool implements BufferPool {
+public class LRUBufferPool {
     private RandomAccessFile disk;
     private Queue lru;
     private boolean cacheFlag;
     private static final int BLOCK_SIZE = 4096;
     private static final int RECORD_SIZE = 4;
-    private long endTime;
+    private long executionTime;
     int hits = 0;
     int reads = 0;
     int writes = 0;
@@ -23,12 +23,14 @@ public class LRUBufferPool implements BufferPool {
         }
         new QuicksortManager(this, diskLength);
         flush();
-        endTime = System.currentTimeMillis() - startTime;
+        executionTime = System.currentTimeMillis() - startTime;
     }
 
 
-    @Override
-    public void insert(byte[] fromArray, int bytesCopied, int destinationPos)
+    public void storeBytes(
+        byte[] fromArray,
+        int bytesCopied,
+        int destinationPos)
         throws IOException {
         Buffer found = getBuffer(destinationPos);
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
@@ -41,8 +43,10 @@ public class LRUBufferPool implements BufferPool {
     }
 
 
-    @Override
-    public void getBytes(byte[] fromArray, int bytesCopied, int destinationPos)
+    public void retrieveBytes(
+        byte[] fromArray,
+        int bytesCopied,
+        int destinationPos)
         throws IOException {
         Buffer found = getBuffer(destinationPos);
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
@@ -129,11 +133,11 @@ public class LRUBufferPool implements BufferPool {
 
 
     public long getTime() {
-        return (endTime / 1000000);
+        return (executionTime / 1000000);
     }
 
 
-    public void closeFile() throws IOException {
+    public void terminateFileOperation() throws IOException {
         disk.close();
     }
 

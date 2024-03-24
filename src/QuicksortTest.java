@@ -76,6 +76,7 @@ public class QuicksortTest extends TestCase {
         String[] args = new String[3];
         args[0] = fname; // the file to be sorted.
         args[1] = "1"; // number of buffers, can impact performance
+// args[1] = "10"; // number of buffers, can impact performance
         args[2] = "stats.txt"; // filename for sorting stats
         Quicksort.main(args);
         // Now the file *should* be sorted, so lets check!
