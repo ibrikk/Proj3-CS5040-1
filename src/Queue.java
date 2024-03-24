@@ -40,16 +40,16 @@ public class Queue {
 
 
     public Buffer search(int pos) {
-        Buffer ret = null;
+        Buffer found = null;
         Node<Buffer> temp = head.getNext();
         while (temp.getVal() != null) {
             if (temp.getVal().getPosition() == pos) {
-                ret = temp.getVal();
+                found = temp.getVal();
                 break;
             }
             temp = temp.getNext();
         }
-        return ret;
+        return found;
     }
 
 
