@@ -32,8 +32,7 @@ public class LRUBufferPool {
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
         byte[] temp = found.getByteArray();
         for (int i = 0; i < bytesCopied; i++) {
-            temp[bufferPos] = fromArray[i];
-            bufferPos++;
+            temp[bufferPos++] = fromArray[i];
         }
         found.setByteArray(temp);
         found.setDirty(true);
@@ -49,8 +48,7 @@ public class LRUBufferPool {
         int bufferPos = (destinationPos * RECORD_SIZE) % BLOCK_SIZE;
         byte[] temp = found.getByteArray();
         for (int i = 0; i < bytesCopied; i++) {
-            fromArray[i] = temp[bufferPos];
-            bufferPos++;
+            fromArray[i] = temp[bufferPos++];
         }
     }
 
