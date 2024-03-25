@@ -10,7 +10,6 @@ public class LRUBufferPool {
 
     public LRUBufferPool(RandomAccessFile file, int bufferCount)
         throws IOException {
-        long startTime = System.currentTimeMillis();
         disk = file;
         int diskLength = (int)disk.length();
         cacheQueue = new Queue(bufferCount);
@@ -19,7 +18,6 @@ public class LRUBufferPool {
         }
         new QuicksortManager(this, diskLength);
         flush();
-        Statistics.executionTime = System.currentTimeMillis() - startTime;
     }
 
 
@@ -65,11 +63,10 @@ public class LRUBufferPool {
     }
 
 
-    public Buffer locateBuffer(int pos) throws IOException {
+    private Buffer locateBuffer(int pos) throws IOException {
         int bufferIndex = (pos * RECORD_SIZE) / BLOCK_SIZE;
         Buffer found = cacheQueue.search(bufferIndex);
         if (found == null) {
-            // If Buffer pool is null, then create
             byte[] newBuff = new byte[BLOCK_SIZE];
             disk.seek(BLOCK_SIZE * bufferIndex);
             disk.read(newBuff, 0, BLOCK_SIZE);
@@ -90,6 +87,7 @@ public class LRUBufferPool {
 
     public short fetchKey(int index) throws IOException {
         short found = 0;
+        // TODO: Here or after?
         if (hitFlag) {
             Statistics.hits++;
         }

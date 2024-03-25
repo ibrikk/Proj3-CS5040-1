@@ -54,8 +54,13 @@ public class Quicksort {
         }
         if (targetFile != null) {
             FileWriter logFile = new FileWriter(arguments[2], true);
+
+            long startTime = System.currentTimeMillis();
+
             LRUBufferPool memoryPool = new LRUBufferPool(targetFile, poolSize);
             memoryPool.closeFileStream();
+
+            Statistics.executionTime = System.currentTimeMillis() - startTime;
 
             logFile.write("Sorting process initiated for: " + arguments[0]
                 + "\n");

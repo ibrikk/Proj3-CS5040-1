@@ -48,3 +48,13 @@ Cache Hit Count: 18222
 Number of Reads from Disk: 1
 Number of Writes to Disk: 1
 Elapsed Time: 0
+Sorting process initiated for: input.bin
+Cache Hit Count: 20529
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 0
+Sorting process initiated for: input.bin
+Cache Hit Count: 19377
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 0

@@ -21,11 +21,11 @@ public class QuicksortManager {
         short pivotValue = bufferPoolInstance.fetchKey(leftIndex);
         int currentPosition = leftIndex;
         while (currentPosition <= rightTemp) {
-            if (bufferPoolInstance.fetchKey(currentPosition) < pivotValue) {
+            short key = bufferPoolInstance.fetchKey(currentPosition);
+            if (key < pivotValue) {
                 swapElements(leftTemp++, currentPosition++);
             }
-            else if (bufferPoolInstance.fetchKey(
-                currentPosition) > pivotValue) {
+            else if (key > pivotValue) {
                 swapElements(currentPosition, rightTemp--);
             }
             else {
