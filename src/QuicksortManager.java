@@ -12,12 +12,6 @@ public class QuicksortManager {
     }
 
 
-    private short choosePivot(int left, int right) throws IOException {
-        int middle = (left + right) / 2;
-        return bufferPoolInstance.fetchKey(middle);
-    }
-
-
     private void performQuickSort(int leftIndex, int rightIndex)
         throws IOException {
         if (rightIndex <= leftIndex) {
@@ -25,7 +19,8 @@ public class QuicksortManager {
         }
         int leftTemp = leftIndex;
         int rightTemp = rightIndex;
-        short pivotValue = choosePivot(leftTemp, rightTemp);
+        short pivotValue = bufferPoolInstance.fetchKey((leftTemp + rightTemp)
+            / 2);
         int currentPosition = leftIndex;
         while (currentPosition <= rightTemp) {
             short key = bufferPoolInstance.fetchKey(currentPosition);
