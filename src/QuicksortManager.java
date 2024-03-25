@@ -12,54 +12,20 @@ public class QuicksortManager {
     }
 
 
-    private void performQuickSort(int leftIndex, int rightIndex)
+    private short choosePivot(int leftIndex, int rightIndex)
         throws IOException {
-        if (leftIndex < rightIndex) {
-            if (rightIndex - leftIndex <= 15) { // Threshold check
-                insertionSort(leftIndex, rightIndex);
-            }
-            else {
-                int pivotIndex = partition(leftIndex, rightIndex);
-                performQuickSort(leftIndex, pivotIndex - 1);
-                performQuickSort(pivotIndex + 1, rightIndex);
-            }
-        }
-    }
-
-
-    private int partition(int leftIndex, int rightIndex) throws IOException {
-        // Fetch the pivot key using the middle record for simplicity
-        short pivotValue = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
+        short firstKey = bufferPoolInstance.fetchKey(leftIndex);
+        short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
             / 2);
-
-        // Initialize pointers for the partitioning process
-        int i = leftIndex - 1;
-        int j = rightIndex + 1;
-
-        // Start the partitioning loop
-        while (true) {
-            // Move the left pointer (i) to the right as long as the found keys
-            // are less than the pivot
-            do {
-                i++;
-            }
-            while (bufferPoolInstance.fetchKey(i) < pivotValue);
-
-            // Move the right pointer (j) to the left as long as the found keys
-            // are greater than the pivot
-            do {
-                j--;
-            }
-            while (bufferPoolInstance.fetchKey(j) > pivotValue);
-
-            // If the pointers meet or cross, the partitioning is complete
-            if (i >= j) {
-                return j; // j is now the index of the last element in the lower
-                          // partition
-            }
-
-            // Swap elements across the pivot to ensure proper ordering
-            swapElements(i, j);
+        short lastKey = bufferPoolInstance.fetchKey(rightIndex);
+        if ((firstKey - middleKey) * (lastKey - firstKey) >= 0) {
+            return firstKey;
+        }
+        else if ((middleKey - firstKey) * (lastKey - middleKey) >= 0) {
+            return middleKey;
+        }
+        else {
+            return lastKey;
         }
     }
 
@@ -68,12 +34,61 @@ public class QuicksortManager {
         throws IOException {
         for (int i = leftIndex + 1; i <= rightIndex; i++) {
             short currentKey = bufferPoolInstance.fetchKey(i);
-            int j = i - 1;
+            int j = i;
+            // Move elements greater than currentKey to one position ahead of
+            // their current position
+            while (j > leftIndex && bufferPoolInstance.fetchKey(j
+                - 1) > currentKey) {
+                swapElements(j, j - 1);
+                j--;
+            }
+        }
+    }
 
-            while (j >= leftIndex && bufferPoolInstance.fetchKey(
-                j) > currentKey) {
-                swapElements(j, j + 1);
-                j = j - 1;
+
+    private int partition(int leftIndex, int rightIndex) throws IOException {
+        // Choose a pivot using the improved method to select a median value
+        short pivotValue = choosePivot(leftIndex, rightIndex);
+
+        int i = leftIndex;
+        int j = rightIndex;
+
+        // Continue looping until the indices meet
+        while (i <= j) {
+            // Increment i until an element greater than the pivot is found
+            while (bufferPoolInstance.fetchKey(i) < pivotValue) {
+                i++;
+            }
+
+            // Decrement j until an element less than the pivot is found
+            while (bufferPoolInstance.fetchKey(j) > pivotValue) {
+                j--;
+            }
+
+            // If i is less than or equal to j, swap the elements and move the
+            // indices
+            if (i <= j) {
+                swapElements(i, j);
+                i++;
+                j--;
+            }
+        }
+        // Return the partition point
+        return i;
+    }
+
+
+    private void performQuickSort(int leftIndex, int rightIndex)
+        throws IOException {
+        if (leftIndex < rightIndex) {
+            int difference = rightIndex - leftIndex + 1;
+            if (difference >= 3 && difference <= 9) {
+                insertionSort(leftIndex, rightIndex);
+            }
+            else {
+                int pivotIndex = partition(leftIndex, rightIndex);
+                performQuickSort(leftIndex, pivotIndex - 1);
+                performQuickSort(pivotIndex + 1, rightIndex);
             }
         }
     }
