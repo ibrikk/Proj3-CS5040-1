@@ -18,8 +18,6 @@ public class QuicksortManager {
         short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
             / 2);
         short lastKey = bufferPoolInstance.fetchKey(rightIndex);
-
-        // Manually determine the median of the three keys
         if ((firstKey > middleKey) ^ (firstKey > lastKey))
             return firstKey;
         else if ((middleKey > firstKey) ^ (middleKey > lastKey))
