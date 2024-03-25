@@ -1,9 +1,13 @@
-
 public class Statistics {
-    static int hits = 0;
-    static int reads = 0;
-    static int writes = 0;
-    static long executionTime;
+    public static int hits = 0;
+    public static int reads = 0;
+    public static int writes = 0;
+    public static long executionTime = 0;
+
+    public static long measureTime() {
+        return executionTime / 1000;
+    }
+
 
     public static int getHits() {
         return hits;
@@ -17,10 +21,5 @@ public class Statistics {
 
     public static int getWrites() {
         return writes;
-    }
-
-
-    public static long measureTime() {
-        return (executionTime / 1000000);
     }
 }
