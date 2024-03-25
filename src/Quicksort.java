@@ -1,14 +1,16 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 /**
  * {Project Description Here}
  */
 
-
-
 /**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {franciscawood}
  */
 
 // On my honor:
@@ -34,10 +36,45 @@
 public class Quicksort {
 
     /**
-     * @param args
-     *      Command line parameters.  See the project spec!!!
+     * Main method to execute the sorting process.
+     * 
+     * @param arguments
+     *            Command line arguments provided to the program.
+     * @throws IOException
+     *             If an I/O error occurs.
      */
-    public static void main(String[] args) {
-        // This is the main file for the program.
+    public static void main(String[] arguments) throws IOException {
+        int poolSize = Integer.parseInt(arguments[1]);
+        RandomAccessFile targetFile = null;
+        try {
+            targetFile = new RandomAccessFile(arguments[0], "rw");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (targetFile != null) {
+            FileWriter logFile = new FileWriter(arguments[2], true);
+
+            long startTime = System.currentTimeMillis();
+
+            LRUBufferPool memoryPool = new LRUBufferPool(targetFile, poolSize);
+            memoryPool.closeFileStream();
+
+            Statistics.executionTime = System.currentTimeMillis() - startTime;
+
+            logFile.write("Sorting process initiated for: " + arguments[0]
+                + "\n");
+            logFile.write("Cache Hit Count: " + Statistics.getHits() + "\n");
+            logFile.write("Number of Reads from Disk: " + Statistics.getReads()
+                + "\n");
+            logFile.write("Number of Writes to Disk: " + Statistics.getWrites()
+                + "\n");
+            logFile.write("Elapsed Time: " + Statistics.measureTime() + " milliseconds \n");
+            logFile.flush();
+            logFile.close();
+        }
+        else {
+            System.out.println("File not found: " + arguments[0]);
+        }
     }
 }
