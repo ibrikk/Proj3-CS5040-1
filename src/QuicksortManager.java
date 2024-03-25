@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Arrays;
 
 public class QuicksortManager {
     public static LRUBufferPool bufferPoolInstance;
@@ -11,6 +12,12 @@ public class QuicksortManager {
     }
 
 
+    private short choosePivot(int left, int right) throws IOException {
+        int middle = (left + right) / 2;
+        return bufferPoolInstance.fetchKey(middle);
+    }
+
+
     private void performQuickSort(int leftIndex, int rightIndex)
         throws IOException {
         if (rightIndex <= leftIndex) {
@@ -18,7 +25,7 @@ public class QuicksortManager {
         }
         int leftTemp = leftIndex;
         int rightTemp = rightIndex;
-        short pivotValue = bufferPoolInstance.fetchKey(leftIndex);
+        short pivotValue = choosePivot(leftTemp, rightTemp);
         int currentPosition = leftIndex;
         while (currentPosition <= rightTemp) {
             short key = bufferPoolInstance.fetchKey(currentPosition);
@@ -45,9 +52,11 @@ public class QuicksortManager {
             firstPosition);
         bufferPoolInstance.retrieveBytes(tempForSecond, SIZE_OF_RECORD,
             secondPosition);
-        bufferPoolInstance.storeBytes(tempForFirst, SIZE_OF_RECORD,
-            secondPosition);
-        bufferPoolInstance.storeBytes(tempForSecond, SIZE_OF_RECORD,
-            firstPosition);
+        if (!Arrays.equals(tempForFirst, tempForSecond)) {
+            bufferPoolInstance.storeBytes(tempForFirst, SIZE_OF_RECORD,
+                secondPosition);
+            bufferPoolInstance.storeBytes(tempForSecond, SIZE_OF_RECORD,
+                firstPosition);
+        }
     }
 }
