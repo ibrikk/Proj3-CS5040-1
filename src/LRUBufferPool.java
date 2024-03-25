@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Map;
 
 public class LRUBufferPool {
     private RandomAccessFile disk;
@@ -62,25 +63,28 @@ public class LRUBufferPool {
         }
     }
 
+    private Map<Integer, Buffer> bufferMap;
 
     private Buffer locateBuffer(int pos) throws IOException {
         int bufferIndex = (pos * RECORD_SIZE) / BLOCK_SIZE;
-        Buffer found = cacheQueue.search(bufferIndex);
+
+        Buffer found = bufferMap.get(bufferIndex);
         if (found == null) {
+            // Load the buffer from disk
             byte[] newBuff = new byte[BLOCK_SIZE];
             disk.seek(BLOCK_SIZE * bufferIndex);
             disk.read(newBuff, 0, BLOCK_SIZE);
             disk.seek(0);
+
             found = new Buffer(newBuff, bufferIndex);
+            // Update both the queue and the map
             cacheQueue.enqueue(found);
+            bufferMap.put(bufferIndex, found);
+
             if (cacheQueue.getSize() > cacheQueue.getCapacity()) {
                 removeFromPool();
             }
-            Statistics.reads++;
-            hitFlag = false;
-            return found;
         }
-        hitFlag = true;
         return found;
     }
 
