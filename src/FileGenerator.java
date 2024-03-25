@@ -116,7 +116,7 @@ public class FileGenerator {
         int range = 30000 - minRand; // max random short - min random short
         for (int i = 0; i < numBlocks; i++) {
             for (int j = 0; j < RECORDS_PER_BLOCK; j++) {
-                // val = (short)(random(29999) + 1);
+//                 val = (short)(random(29999) + 1);
                 randKey = Math.abs(rng.nextInt() % range) + minRand;
                 randVal = Math.abs(rng.nextInt() % range) + minRand;
                 dos.writeShort((short)randKey); // THIS writes to the file!
