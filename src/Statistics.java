@@ -5,7 +5,7 @@ public class Statistics {
     public static long executionTime = 0;
 
     public static long measureTime() {
-        return executionTime / 1000;
+        return executionTime;
     }
 
 

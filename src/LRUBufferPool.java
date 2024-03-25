@@ -87,11 +87,10 @@ public class LRUBufferPool {
 
     public short fetchKey(int index) throws IOException {
         short found = 0;
-        // TODO: Here or after?
+        Buffer buf = locateBuffer(index);
         if (hitFlag) {
             Statistics.hits++;
         }
-        Buffer buf = locateBuffer(index);
         int bufferPos = (index * RECORD_SIZE) % BLOCK_SIZE;
         found = buf.extractKey(bufferPos);
         return found;

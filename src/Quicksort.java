@@ -69,7 +69,7 @@ public class Quicksort {
                 + "\n");
             logFile.write("Number of Writes to Disk: " + Statistics.getWrites()
                 + "\n");
-            logFile.write("Elapsed Time: " + Statistics.measureTime() + "\n");
+            logFile.write("Elapsed Time: " + Statistics.measureTime() + " milliseconds \n");
             logFile.flush();
             logFile.close();
         }
