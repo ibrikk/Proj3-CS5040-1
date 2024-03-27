@@ -43,3 +43,438 @@ Cache Hit Count: 11731
 Number of Reads from Disk: 1
 Number of Writes to Disk: 1
 Elapsed Time: 19 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12439
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 9 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11310
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 19 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12348
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 17 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 10994
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11093
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11428
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11040
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 10 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 10801
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 14 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11722
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11364
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 18227
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 18 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11309
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11744
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11199
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11550
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11140
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 13309
+Number of Reads from Disk: 5
+Number of Writes to Disk: 3
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 13988
+Number of Reads from Disk: 5
+Number of Writes to Disk: 3
+Elapsed Time: 10 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 13765
+Number of Reads from Disk: 5
+Number of Writes to Disk: 3
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 57393
+Number of Reads from Disk: 3209
+Number of Writes to Disk: 2337
+Elapsed Time: 38 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 61721
+Number of Reads from Disk: 3181
+Number of Writes to Disk: 2327
+Elapsed Time: 52 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12306
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 58140
+Number of Reads from Disk: 3193
+Number of Writes to Disk: 2327
+Elapsed Time: 45 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12504
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11061
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11309
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 18 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11671
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 13151
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11568
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 19 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11642
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 10972
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11431
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 26 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11144
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11845
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11129
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 10 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12203
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 10 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11108
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11706
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 10 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11253
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11132
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 14 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11911
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 14 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 10910
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12247
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 56506
+Number of Reads from Disk: 2909
+Number of Writes to Disk: 2136
+Elapsed Time: 42 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11693
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 18 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 96784
+Number of Reads from Disk: 3017
+Number of Writes to Disk: 2233
+Elapsed Time: 71 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11654
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 214 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29151
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 188 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31241
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 230 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29896
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 210 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30556
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 48 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29153
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 139 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30538
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 148 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29745
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 183 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29408
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 47 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30756
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 33 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30013
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 14 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30025
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29968
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 32 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29873
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 34 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30245
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 39 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31233
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 28 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 32185
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 48 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31365
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 43 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30315
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 52 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30927
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 87 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 32756
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 63 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31224
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 78 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30958
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 45 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 33232
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31188
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 33 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30331
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 34 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30613
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 52 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31909
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 75 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30050
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 64 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29312
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 63 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 28808
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 60 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31039
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 59 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 32896
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 59 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31891
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 55 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29477
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 76 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 32374
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 44 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29716
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30094
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 61 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 77000
+Number of Reads from Disk: 2369
+Number of Writes to Disk: 1760
+Elapsed Time: 138 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 32336
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 83 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29899
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 41 milliseconds 
