@@ -94,6 +94,32 @@ public class QuicksortManager {
     }
 
 
+//    private void performQuickSort(int leftIndex, int rightIndex)
+//        throws IOException {
+//        if (rightIndex <= leftIndex) {
+//            return;
+//        }
+//        int leftTemp = leftIndex;
+//        int rightTemp = rightIndex;
+//        short pivotValue = choosePivot(leftTemp, rightTemp);
+//        int currentPosition = leftIndex;
+//        while (currentPosition <= rightTemp) {
+//            short key = bufferPoolInstance.fetchKey(currentPosition);
+//            if (key < pivotValue) {
+//                swapElements(leftTemp++, currentPosition++);
+//            }
+//            else if (key > pivotValue) {
+//                swapElements(currentPosition, rightTemp--);
+//            }
+//            else {
+//                currentPosition++;
+//            }
+//        }
+//        performQuickSort(leftIndex, leftTemp - 1);
+//        performQuickSort(rightTemp + 1, rightIndex);
+//    }
+
+
     private void swapElements(int firstPosition, int secondPosition)
         throws IOException {
         byte[] tempForFirst = new byte[SIZE_OF_RECORD];
