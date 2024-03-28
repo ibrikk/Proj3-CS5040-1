@@ -81,4 +81,30 @@ public class QuicksortTest extends TestCase {
 		assertTrue(CheckFile.check(fname));
 	}
 
+	/**
+	 * This method is a demonstration of the file generator and file checker
+	 * functionality. It calles generateFile to create a small binary file. It then
+	 * calls the file checker to see if it is sorted (presumably not since we don't
+	 * call a sort method in this test, so we assertFalse).
+	 *
+	 * @throws Exception either a IOException or FileNotFoundException
+	 */
+	public void testSorting_2() throws Exception {
+		String fname = "threeBlock.txt";
+		FileGenerator fg = new FileGenerator(fname, 1);
+		fg.generateFile(FileType.BINARY);
+
+		assertFalse(CheckFile.check(fname)); // file shouldn't be sorted
+
+		String[] args = new String[3];
+		args[0] = fname; // the file to be sorted.
+		args[1] = "1"; // number of buffers, can impact performance
+// args[1] = "3"; // number of buffers, can impact performance
+// args[1] = "10"; // number of buffers, can impact performance
+		args[2] = "stats.txt"; // filename for sorting stats
+		Quicksort.main(args);
+		// Now the file *should* be sorted, so lets check!
+
+		assertTrue(CheckFile.check(fname));
+	}
 }

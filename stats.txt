@@ -478,3 +478,223 @@ Cache Hit Count: 29899
 Number of Reads from Disk: 1
 Number of Writes to Disk: 1
 Elapsed Time: 41 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30522
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 55 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 30363
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 39 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 25558
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 26604
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 27 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 26976
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 24 milliseconds 
+Sorting process initiated for: checkme.txt
+Cache Hit Count: 52300
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 26387
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 28 milliseconds 
+Sorting process initiated for: checkme.txt
+Cache Hit Count: 53610
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 26448
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 25 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 52513
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 9 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 26070
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 23 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 53050
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 7 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 49296
+Number of Reads from Disk: 2709
+Number of Writes to Disk: 1953
+Elapsed Time: 57 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 93373
+Number of Reads from Disk: 5422
+Number of Writes to Disk: 3905
+Elapsed Time: 30 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 59677
+Number of Reads from Disk: 3125
+Number of Writes to Disk: 2343
+Elapsed Time: 56 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 110278
+Number of Reads from Disk: 6138
+Number of Writes to Disk: 4602
+Elapsed Time: 24 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 25912
+Number of Reads from Disk: 1931
+Number of Writes to Disk: 1435
+Elapsed Time: 46 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 50203
+Number of Reads from Disk: 3790
+Number of Writes to Disk: 2822
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 29349
+Number of Reads from Disk: 4509
+Number of Writes to Disk: 2969
+Elapsed Time: 66 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 52443
+Number of Reads from Disk: 8242
+Number of Writes to Disk: 5435
+Elapsed Time: 30 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 23930
+Number of Reads from Disk: 1685
+Number of Writes to Disk: 1261
+Elapsed Time: 47 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 48369
+Number of Reads from Disk: 3462
+Number of Writes to Disk: 2591
+Elapsed Time: 18 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 50918
+Number of Reads from Disk: 3021
+Number of Writes to Disk: 2227
+Elapsed Time: 71 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 104762
+Number of Reads from Disk: 5962
+Number of Writes to Disk: 4404
+Elapsed Time: 24 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 2 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 0 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 31389
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 12 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 64582
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 4 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 6 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 0 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 3 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 0 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 4 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 0
+Number of Reads from Disk: 0
+Number of Writes to Disk: 0
+Elapsed Time: 0 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 22894
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 45334
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 3 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 21985
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 11 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 44246
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 3 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 21712
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 21 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 43906
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 13 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 22161
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 28 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 44278
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 7 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 22324
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 20 milliseconds 
+Sorting process initiated for: threeBlock.txt
+Cache Hit Count: 44564
+Number of Reads from Disk: 2
+Number of Writes to Disk: 2
+Elapsed Time: 2 milliseconds 
