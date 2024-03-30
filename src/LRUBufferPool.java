@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Manages a buffer pool using the Least Recently Used (LRU) strategy for
@@ -17,6 +19,7 @@ public class LRUBufferPool {
     private boolean hitFlag;
     private static final int BLOCK_SIZE = 4096;
     private static final int RECORD_SIZE = 4;
+    private Map<Integer, Buffer> bufferMap;
 
     /**
      * Constructs a new LRUBufferPool for the specified disk file and buffer
@@ -34,6 +37,7 @@ public class LRUBufferPool {
         disk = file;
         int diskLength = (int)disk.length();
         cacheQueue = new Queue(bufferCount);
+        this.bufferMap = new HashMap<>();
         for (int i = 0; i < bufferCount; i++) {
             cacheQueue.enqueue(new Buffer(null, -1));
         }
@@ -128,25 +132,62 @@ public class LRUBufferPool {
      * @throws IOException
      *             If an I/O error occurs during the operation.
      */
-    private Buffer locateBuffer(int pos) throws IOException {
-        int bufferIndex = (pos * RECORD_SIZE) / BLOCK_SIZE;
-        Buffer found = cacheQueue.search(bufferIndex);
+    private Buffer locateBuffer(int recordIndex) throws IOException {
+        int blockIndex = recordIndex / (BLOCK_SIZE / RECORD_SIZE);
+
+        Buffer found = bufferMap.get(blockIndex);
         if (found == null) {
-            byte[] newBuff = new byte[BLOCK_SIZE];
-            disk.seek(BLOCK_SIZE * bufferIndex);
-            disk.read(newBuff, 0, BLOCK_SIZE);
-            disk.seek(0);
-            found = new Buffer(newBuff, bufferIndex);
-            cacheQueue.enqueue(found);
-            if (cacheQueue.getSize() > cacheQueue.getCapacity()) {
-                removeFromPool();
+            if (cacheQueue.getSize() >= cacheQueue.getCapacity()) {
+                Buffer leastUsed = cacheQueue.dequeue();
+                if (leastUsed.isDirty()) {
+                    writeToDisk(leastUsed);
+                }
+                bufferMap.remove(leastUsed.getPosition());
             }
-            Statistics.incrementReads();
-            hitFlag = false;
-            return found;
+
+            found = loadBufferFromDisk(blockIndex);
+            cacheQueue.enqueue(found);
+            bufferMap.put(blockIndex, found);
         }
-        hitFlag = true;
+        else {
+
+            cacheQueue.markAsRecentlyUsed(found);
+        }
         return found;
+    }
+
+
+    /**
+     * Locates a buffer in the pool corresponding to a specific position or
+     * loads it from disk if not present.
+     *
+     * @param blockIndex
+     *            The position for which the buffer is sought.
+     * @return new Buffer with data and index
+     * @throws IOException
+     *             If an I/O error occurs during the operation.
+     */
+    private Buffer loadBufferFromDisk(int blockIndex) throws IOException {
+        byte[] data = new byte[BLOCK_SIZE];
+        disk.seek((long)blockIndex * BLOCK_SIZE);
+        disk.readFully(data);
+        return new Buffer(data, blockIndex);
+    }
+
+
+    /**
+     * Locates a buffer in the pool corresponding to a specific position or
+     * loads it from disk if not present.
+     *
+     * @param buffer
+     *            The buffer is sought.
+     * @throws IOException
+     *             If an I/O error occurs during the operation.
+     */
+    public void writeToDisk(Buffer buffer) throws IOException {
+        disk.seek((long)buffer.getPosition() * BLOCK_SIZE);
+        disk.write(buffer.getByteArray());
+        buffer.setDirty(false);
     }
 
 

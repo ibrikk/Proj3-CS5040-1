@@ -134,4 +134,44 @@ public class Queue {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+
+    /**
+     * Marks buffer as recently used
+     *
+     * @param buffer
+     *            The buffer that is recently used.
+     */
+    public void markAsRecentlyUsed(Buffer buffer) {
+        Node<Buffer> node = findNodeForBuffer(buffer);
+        if (node == null) {
+            return;
+        }
+
+        node.getPrev().setNext(node.getNext());
+        node.getNext().setPrev(node.getPrev());
+
+        node.setNext(tail);
+        node.setPrev(tail.getPrev());
+        tail.getPrev().setNext(node);
+        tail.setPrev(node);
+    }
+
+
+    /**
+     * Marks buffer as recently used
+     *
+     * @param buffer
+     *            Find the buffer in the queue.
+     */
+    private Node<Buffer> findNodeForBuffer(Buffer buffer) {
+        Node<Buffer> current = head.getNext();
+        while (current != tail) {
+            if (current.getVal().equals(buffer)) {
+                return current;
+            }
+            current = current.getNext();
+        }
+        return null;
+    }
 }
