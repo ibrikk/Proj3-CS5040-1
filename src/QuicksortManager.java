@@ -4,7 +4,8 @@ import java.util.Arrays;
 public class QuicksortManager {
     public static LRUBufferPool bufferPoolInstance;
     private static final int SIZE_OF_RECORD = 4;
-    private static final int INSERTION_SORT_THRESHOLD = 10;
+    private static final int INSERTION_SORT_THRESHOLD_MAX = 10;
+    private static final int INSERTION_SORT_THRESHOLD_MIN = 3;
 
     public QuicksortManager(LRUBufferPool pool, int lengthOfFile)
         throws IOException {
@@ -14,21 +15,25 @@ public class QuicksortManager {
         insertionSort(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
     }
 
+// private int choosePivotIndex(int leftIndex, int rightIndex)
+// throws IOException {
+// short firstKey = bufferPoolInstance.fetchKey(leftIndex);
+// short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
+// / 2);
+// short lastKey = bufferPoolInstance.fetchKey(rightIndex);
+//
+// if ((firstKey > middleKey) ^ (firstKey > lastKey))
+// return leftIndex;
+// else if ((middleKey > firstKey) ^ (middleKey > lastKey))
+// return (leftIndex + rightIndex) / 2;
+// else
+// return rightIndex;
+// }
+
 
     private int choosePivotIndex(int leftIndex, int rightIndex)
         throws IOException {
-        // Median-of-three pivot selection for better performance
-        short firstKey = bufferPoolInstance.fetchKey(leftIndex);
-        short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
-            / 2);
-        short lastKey = bufferPoolInstance.fetchKey(rightIndex);
-
-        if ((firstKey > middleKey) ^ (firstKey > lastKey))
-            return leftIndex;
-        else if ((middleKey > firstKey) ^ (middleKey > lastKey))
-            return (leftIndex + rightIndex) / 2;
-        else
-            return rightIndex;
+        return (leftIndex + rightIndex) / 2;
     }
 
 
@@ -37,7 +42,8 @@ public class QuicksortManager {
         if (rightIndex <= leftIndex) {
             return;
         }
-        if (rightIndex - leftIndex + 1 < INSERTION_SORT_THRESHOLD) {
+        if (rightIndex - leftIndex + 1 <= INSERTION_SORT_THRESHOLD_MAX
+            && rightIndex - leftIndex + 1 >= INSERTION_SORT_THRESHOLD_MIN) {
             // Defer to insertion sort for the final tuning at the end of the
             // method
             return;
@@ -61,16 +67,16 @@ public class QuicksortManager {
         int j = rightIndex;
 
         while (true) {
-            // Move leftIndex forward while items are less than pivot
+
             while (bufferPoolInstance.fetchKey(i) < pivot) {
                 i++;
             }
-            // Move rightIndex backward while items are greater than pivot
+
             while (bufferPoolInstance.fetchKey(j) > pivot) {
                 j--;
             }
             if (i >= j) {
-                return j; // or i, based on your partition logic needs
+                return j;
             }
             swapElements(i, j);
             i++;
