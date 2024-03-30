@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * A manager class that implements a hybrid sorting algorithm combining
@@ -192,8 +191,14 @@ public class QuicksortManager {
             firstPosition);
         bufferPoolInstance.retrieveBytes(tempForSecond, SIZE_OF_RECORD,
             secondPosition);
-
-        if (!Arrays.equals(tempForFirst, tempForSecond)) {
+        boolean isDuplicate = true;
+        for (int i = 0; i < tempForFirst.length; i++) {
+            if (tempForFirst[i] != tempForSecond[i]) {
+                isDuplicate = false;
+                break;
+            }
+        }
+        if (!isDuplicate) {
             bufferPoolInstance.storeBytes(tempForFirst, SIZE_OF_RECORD,
                 secondPosition);
             bufferPoolInstance.storeBytes(tempForSecond, SIZE_OF_RECORD,
