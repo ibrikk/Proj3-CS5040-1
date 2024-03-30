@@ -1,12 +1,13 @@
-/**
- * @author {Ibrahim Khalilov} {Francisca Wood}
- * @version {ibrahimk} {fransciscawood}
- */
+
 /**
  * Represents a generic node in a doubly linked list, holding a value and
  * references to both the next and previous nodes in the list.
  * This class is designed to be used in data structures that require
  * bidirectional navigation, such as doubly linked lists.
+ * 
+ * 
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
  *
  * @param <T>
  *            The type of the value stored in the node.

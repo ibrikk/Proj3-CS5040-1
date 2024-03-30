@@ -3,6 +3,9 @@ import java.util.*;
 
 /**
  * Enum variables
+ * 
+ * @author Cliff Shaffer, Patrick Sullivan
+ * @version 2024-03-30
  */
 enum FileType {
     /**
@@ -34,15 +37,25 @@ enum FileType {
  */
 public class FileGenerator {
     // Constants defining the structure of the generated files
-    /* BYTES_IN_KEY */
+    /**
+     * BYTES_IN_KEY
+     */
     static public final int BYTES_IN_KEY = Short.BYTES;
-    /* BYTES_IN_VALUE */
+    /**
+     * BYTES_IN_VALUE
+     */
     static public final int BYTES_IN_VALUE = Short.BYTES;
-    /* BYTESBYTES_PER_RECORD_IN_VALUE */
+    /**
+     * BYTESBYTES_PER_RECORD_IN_VALUE
+     */
     static public final int BYTES_PER_RECORD = BYTES_IN_KEY + BYTES_IN_VALUE;
-    /* RECORDS_PER_BLOCK */
+    /**
+     * RECORDS_PER_BLOCK
+     */
     static public final int RECORDS_PER_BLOCK = 1024;
-    /* BYTES_PER_BLOCK */
+    /**
+     * BYTES_PER_BLOCK
+     */
     static public final int BYTES_PER_BLOCK = RECORDS_PER_BLOCK
         * BYTES_PER_RECORD;
 
