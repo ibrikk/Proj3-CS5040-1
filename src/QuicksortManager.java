@@ -4,52 +4,92 @@ import java.util.Arrays;
 public class QuicksortManager {
     public static LRUBufferPool bufferPoolInstance;
     private static final int SIZE_OF_RECORD = 4;
+    private static final int INSERTION_SORT_THRESHOLD = 10;
 
     public QuicksortManager(LRUBufferPool pool, int lengthOfFile)
         throws IOException {
         bufferPoolInstance = pool;
-        performQuickSort(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
+        performQuickSortHybrid(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
+
+        insertionSort(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
     }
 
 
-    private short choosePivot(int leftIndex, int rightIndex)
+    private int choosePivotIndex(int leftIndex, int rightIndex)
         throws IOException {
+        // Median-of-three pivot selection for better performance
         short firstKey = bufferPoolInstance.fetchKey(leftIndex);
         short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
             / 2);
         short lastKey = bufferPoolInstance.fetchKey(rightIndex);
+
         if ((firstKey > middleKey) ^ (firstKey > lastKey))
-            return firstKey;
+            return leftIndex;
         else if ((middleKey > firstKey) ^ (middleKey > lastKey))
-            return middleKey;
+            return (leftIndex + rightIndex) / 2;
         else
-            return lastKey;
+            return rightIndex;
     }
 
 
-    private void performQuickSort(int leftIndex, int rightIndex)
+    private void performQuickSortHybrid(int leftIndex, int rightIndex)
         throws IOException {
         if (rightIndex <= leftIndex) {
             return;
         }
-        int leftTemp = leftIndex;
-        int rightTemp = rightIndex;
-        short pivotValue = choosePivot(leftTemp, rightTemp);
-        int currentPosition = leftIndex;
-        while (currentPosition <= rightTemp) {
-            short key = bufferPoolInstance.fetchKey(currentPosition);
-            if (key < pivotValue) {
-                swapElements(leftTemp++, currentPosition++);
+        if (rightIndex - leftIndex + 1 < INSERTION_SORT_THRESHOLD) {
+            // Defer to insertion sort for the final tuning at the end of the
+            // method
+            return;
+        }
+        else {
+            int pivotIndex = choosePivotIndex(leftIndex, rightIndex);
+            swapElements(pivotIndex, rightIndex);
+            int partitionIndex = partitionDSA(leftIndex, rightIndex - 1,
+                bufferPoolInstance.fetchKey(rightIndex));
+            swapElements(partitionIndex, rightIndex);
+
+            performQuickSortHybrid(leftIndex, partitionIndex - 1);
+            performQuickSortHybrid(partitionIndex + 1, rightIndex);
+        }
+    }
+
+
+    private int partitionDSA(int leftIndex, int rightIndex, short pivot)
+        throws IOException {
+        int i = leftIndex;
+        int j = rightIndex;
+
+        while (true) {
+            // Move leftIndex forward while items are less than pivot
+            while (bufferPoolInstance.fetchKey(i) < pivot) {
+                i++;
             }
-            else if (key > pivotValue) {
-                swapElements(currentPosition, rightTemp--);
+            // Move rightIndex backward while items are greater than pivot
+            while (bufferPoolInstance.fetchKey(j) > pivot) {
+                j--;
             }
-            else {
-                currentPosition++;
+            if (i >= j) {
+                return j; // or i, based on your partition logic needs
+            }
+            swapElements(i, j);
+            i++;
+            j--;
+        }
+    }
+
+
+    private void insertionSort(int leftIndex, int rightIndex)
+        throws IOException {
+        for (int i = leftIndex + 1; i <= rightIndex; i++) {
+            short currentKey = bufferPoolInstance.fetchKey(i);
+            int j = i - 1;
+            while (j >= leftIndex && bufferPoolInstance.fetchKey(
+                j) > currentKey) {
+                swapElements(j, j + 1);
+                j--;
             }
         }
-        performQuickSort(leftIndex, leftTemp - 1);
-        performQuickSort(rightTemp + 1, rightIndex);
     }
 
 
@@ -61,6 +101,7 @@ public class QuicksortManager {
             firstPosition);
         bufferPoolInstance.retrieveBytes(tempForSecond, SIZE_OF_RECORD,
             secondPosition);
+
         if (!Arrays.equals(tempForFirst, tempForSecond)) {
             bufferPoolInstance.storeBytes(tempForFirst, SIZE_OF_RECORD,
                 secondPosition);
