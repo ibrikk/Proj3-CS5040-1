@@ -15,25 +15,20 @@ public class QuicksortManager {
         insertionSort(0, (lengthOfFile / SIZE_OF_RECORD) - 1);
     }
 
-// private int choosePivotIndex(int leftIndex, int rightIndex)
-// throws IOException {
-// short firstKey = bufferPoolInstance.fetchKey(leftIndex);
-// short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
-// / 2);
-// short lastKey = bufferPoolInstance.fetchKey(rightIndex);
-//
-// if ((firstKey > middleKey) ^ (firstKey > lastKey))
-// return leftIndex;
-// else if ((middleKey > firstKey) ^ (middleKey > lastKey))
-// return (leftIndex + rightIndex) / 2;
-// else
-// return rightIndex;
-// }
-
 
     private int choosePivotIndex(int leftIndex, int rightIndex)
         throws IOException {
-        return (leftIndex + rightIndex) / 2;
+        short firstKey = bufferPoolInstance.fetchKey(leftIndex);
+        short middleKey = bufferPoolInstance.fetchKey((leftIndex + rightIndex)
+            / 2);
+        short lastKey = bufferPoolInstance.fetchKey(rightIndex);
+
+        if ((firstKey > middleKey) ^ (firstKey > lastKey))
+            return leftIndex;
+        else if ((middleKey > firstKey) ^ (middleKey > lastKey))
+            return (leftIndex + rightIndex) / 2;
+        else
+            return rightIndex;
     }
 
 
