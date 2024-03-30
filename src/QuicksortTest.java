@@ -18,6 +18,12 @@ public class QuicksortTest extends TestCase {
     }
 
 
+    /**
+     * Tests File Generation
+     *
+     * @throws Exception
+     *             either a IOException or FileNotFoundException
+     */
     public void testFileGen() throws IOException {
         String fname = "threeBlock.txt";
         int blocks = 3;

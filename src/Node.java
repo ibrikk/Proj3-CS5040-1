@@ -1,4 +1,8 @@
 /**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
+/**
  * Represents a generic node in a doubly linked list, holding a value and
  * references to both the next and previous nodes in the list.
  * This class is designed to be used in data structures that require
@@ -6,10 +10,6 @@
  *
  * @param <T>
  *            The type of the value stored in the node.
- */
-/**
- * @author {Ibrahim Khalilov} {Francisca Wood}
- * @version {ibrahimk} {fransciscawood}
  */
 public class Node<T> {
     private T val;

@@ -89,7 +89,7 @@ public class Statistics {
     /**
      * Sets the total number of disk write operations recorded.
      *
-     * @param The
+     * @param time
      *            total time it took to execute the program.
      */
     public static void setExecutionTime(long time) {
