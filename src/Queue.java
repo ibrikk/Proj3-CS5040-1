@@ -6,6 +6,10 @@
  * The queue is implemented as a doubly linked list to efficiently add and
  * remove elements at both ends.
  */
+/**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
 public class Queue {
     private Node<Buffer> tail;
     private Node<Buffer> head;

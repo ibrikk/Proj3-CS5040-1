@@ -9,6 +9,13 @@ import java.nio.ByteBuffer;
  * (modified), and extracting
  * specific pieces of data such as keys from the buffered data.
  */
+
+/**
+ * The class containing the main method.
+ *
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {franciscawood}
+ */
 public class Buffer {
     private byte[] bytes;
     private boolean dirty;
@@ -91,7 +98,7 @@ public class Buffer {
     /**
      * Sets the position or identifier of this buffer.
      *
-     * @param pos
+     * @param position
      *            The new position or identifier for the buffer.
      */
     public void setPosition(int position) {

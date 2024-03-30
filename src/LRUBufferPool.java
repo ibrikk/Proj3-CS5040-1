@@ -7,6 +7,10 @@ import java.io.RandomAccessFile;
  * This class is designed to minimize disk I/O by caching recently accessed data
  * blocks in memory.
  */
+/**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
 public class LRUBufferPool {
     private RandomAccessFile disk;
     private Queue cacheQueue;

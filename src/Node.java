@@ -7,6 +7,10 @@
  * @param <T>
  *            The type of the value stored in the node.
  */
+/**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
 public class Node<T> {
     private T val;
     private Node<T> next;

@@ -10,6 +10,10 @@ import java.util.Arrays;
  * Sort is applied for final tuning
  * on smaller segments to improve the overall sorting performance.
  */
+/**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
 public class QuicksortManager {
     private static LRUBufferPool bufferPoolInstance;
     private static final int SIZE_OF_RECORD = 4;

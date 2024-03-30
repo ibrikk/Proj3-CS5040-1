@@ -6,6 +6,10 @@
  * of data buffering and sorting operations, facilitating optimization and
  * debugging efforts.
  */
+/**
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
+ */
 public class Statistics {
     private static int hits = 0;
     private static int reads = 0;
@@ -85,7 +89,8 @@ public class Statistics {
     /**
      * Sets the total number of disk write operations recorded.
      *
-     * @return The total number of disk writes.
+     * @param The
+     *            total time it took to execute the program.
      */
     public static void setExecutionTime(long time) {
         executionTime = time;
