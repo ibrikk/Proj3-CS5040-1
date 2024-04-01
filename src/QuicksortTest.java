@@ -4,18 +4,26 @@ import java.io.RandomAccessFile;
 import student.TestCase;
 
 /**
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author {Ibrahim Khalilov} {Francisca Wood}
+ * @version {ibrahimk} {fransciscawood}
  */
 public class QuicksortTest extends TestCase {
 
-    /** Sets up the tests that follow. In general, used for initialization. */
+    /**
+     * Sets up the tests that follow. In general, used for initialization.
+     */
     public void setUp() throws Exception {
         super.setUp();
         systemOut().clearHistory();
     }
 
 
+    /**
+     * Tests File Generation
+     *
+     * @throws Exception
+     *             either a IOException or FileNotFoundException
+     */
     public void testFileGen() throws IOException {
         String fname = "threeBlock.txt";
         int blocks = 3;
@@ -30,7 +38,7 @@ public class QuicksortTest extends TestCase {
         assertEquals(calcedBytes, fileNumBytes); // size is correct!
 
         RandomAccessFile raf = new RandomAccessFile(f, "r");
-        short firstKey = raf.readShort();// reads two bytes
+        short firstKey = raf.readShort(); // reads two bytes
         assertEquals(8273, firstKey); // first key looks like ' Q', translates
                                       // to 8273
 
@@ -43,6 +51,12 @@ public class QuicksortTest extends TestCase {
     }
 
 
+    /**
+     * Tests CheckFile
+     *
+     * @throws Exception
+     *             either a IOException or FileNotFoundException
+     */
     public void testCheckFile() throws Exception {
         assertTrue(CheckFile.check("tinySorted.txt"));
 

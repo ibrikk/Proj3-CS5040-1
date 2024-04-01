@@ -23,3 +23,73 @@ Cache Hit Count: 12304
 Number of Reads from Disk: 1
 Number of Writes to Disk: 1
 Elapsed Time: 7 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12451
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 20 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12411
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 57 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12941
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 15 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12020
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12394
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 88 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 12286
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 54 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 11999
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 15737
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 23 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 16940
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 16 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 16200
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 19 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 15674
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 25 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 15952
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 25 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 14488
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 22 milliseconds 
+Sorting process initiated for: input.bin
+Cache Hit Count: 15157
+Number of Reads from Disk: 1
+Number of Writes to Disk: 1
+Elapsed Time: 20 milliseconds 

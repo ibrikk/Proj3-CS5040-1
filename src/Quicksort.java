@@ -3,7 +3,12 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 /**
- * {Project Description Here}
+ * {This project develops a comprehensive system designed to enhance data
+ * processing efficiency through optimized buffering and sorting mechanisms.
+ * Utilizing a Least Recently Used (LRU) caching strategy, the system minimizes
+ * disk I/O operations, thereby significantly improving the performance of data
+ * retrieval and manipulation tasks. At its core, the project is comprised of
+ * several key components}
  */
 
 /**
@@ -60,7 +65,7 @@ public class Quicksort {
             LRUBufferPool memoryPool = new LRUBufferPool(targetFile, poolSize);
             memoryPool.closeFileStream();
 
-            Statistics.executionTime = System.currentTimeMillis() - startTime;
+            Statistics.setExecutionTime(System.currentTimeMillis() - startTime);
 
             logFile.write("Sorting process initiated for: " + arguments[0]
                 + "\n");
@@ -69,7 +74,8 @@ public class Quicksort {
                 + "\n");
             logFile.write("Number of Writes to Disk: " + Statistics.getWrites()
                 + "\n");
-            logFile.write("Elapsed Time: " + Statistics.measureTime() + " milliseconds \n");
+            logFile.write("Elapsed Time: " + Statistics.measureTime()
+                + " milliseconds \n");
             logFile.flush();
             logFile.close();
         }
